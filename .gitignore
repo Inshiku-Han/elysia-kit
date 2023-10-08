@@ -40,3 +40,11 @@ yarn-error.log*
 **/*.log
 package-lock.json
 **/*.bun
+
+# sqlite
+*.sqlite
+*.sqlite3
+*.db
+
+# Enviorment variables
+.env
