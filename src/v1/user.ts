@@ -2,7 +2,7 @@ import Elysia, { t } from "elysia";
 import prisma from "../db";
 
 const users = new Elysia({ name: "Users", prefix: "/users" })
-  .get("/", async () => prisma.user.findMany(), {
+  .get("/", () => prisma.user.findMany(), {
     response: t.Array(
       t.Object({
         id: t.Number(),
@@ -16,7 +16,7 @@ const users = new Elysia({ name: "Users", prefix: "/users" })
   })
   .post(
     "/",
-    async ({ body }) =>
+    ({ body }) =>
       prisma.user.create({
         data: body,
         select: { id: true, name: true, email: true },
