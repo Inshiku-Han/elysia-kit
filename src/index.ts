@@ -6,7 +6,16 @@ const db = new PrismaClient();
 
 const users = new Elysia({ prefix: "/users" })
   .get("/", async () => db.user.findMany(), {
-    detail: { tags: ["Users"] },
+    detail: {
+      tags: ["Users"],
+      responses: t.Array(
+        t.Object({
+          id: t.Number(),
+          email: t.String(),
+          name: t.Nullable(t.String()),
+        })
+      ),
+    },
   })
   .post(
     "/",
@@ -24,20 +33,33 @@ const users = new Elysia({ prefix: "/users" })
         email: t.String(),
         name: t.Optional(t.String()),
       }),
-      detail: { tags: ["Users"] },
+      detail: {
+        tags: ["Users"],
+        responses: t.Object({
+          id: t.Number(),
+          email: t.String(),
+          name: t.Nullable(t.String()),
+        }),
+      },
     }
   );
 
 const app = new Elysia()
+  .get("/", () => "Hello Elysia")
   .use(
     swagger({
+      path: "/swagger",
       documentation: {
+        info: {
+          title: "Elysia",
+          version: "1.0.0",
+        },
         tags: [{ name: "Users", description: "Users related endpoints" }],
       },
     })
   )
   .group("/v1", (app) => app.get("/", () => "Using v1").use(users))
-  .listen(3000);
+  .listen(4000);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`

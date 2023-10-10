@@ -1,18 +1,17 @@
 {
-  "name": "elysia-prisma",
-  "version": "1.0.50",
+  "name": "elysia-rest",
+  "version": "0.1.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run src/index.ts --watch"
   },
   "dependencies": {
     "@elysiajs/swagger": "^0.7.3",
-    "@prisma/client": "^5.4.1",
+    "@prisma/client": "5.4.2",
     "elysia": "^0.7.15"
   },
   "devDependencies": {
     "bun-types": "latest",
-    "prisma": "^5.4.1"
+    "prisma": "5.4.2"
   },
-  "module": "src/index.js"
+  "module": "src/index.ts"
 }
