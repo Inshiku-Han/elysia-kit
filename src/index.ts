@@ -1,9 +1,22 @@
 import { Elysia } from "elysia";
-import v1 from "./v1";
+import routes from "./routes";
+import { swagger } from "@elysiajs/swagger";
 
 const app = new Elysia()
   .get("/", () => "Hello Elysia")
-  .use(v1)
+  .use(routes)
+  .use(
+    swagger({
+      documentation: {
+        info: {
+          title: "Elysia",
+          description: "API description",
+          version: "0.1.0",
+        },
+        tags: [{ name: "Users", description: "Users related endpoints" }],
+      },
+    })
+  )
   .listen(4000);
 
 console.log(
