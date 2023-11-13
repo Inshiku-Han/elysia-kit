@@ -6,7 +6,7 @@
   "packageManager": "bun@1.0.11",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "generate": "bunx drizzle-kit generate:sqlite --schema src/db/schema.ts",
+    "generate": "drizzle-kit generate:sqlite --schema src/db/schema.ts",
     "migrate": "bun run src/db/migrate.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.ts\""
