@@ -10,6 +10,7 @@
     "dev": "bun run --watch src/index.ts",
     "generate": "drizzle-kit generate:sqlite --schema src/db/schema.ts",
     "migrate": "bun run src/db/migrate.ts",
+    "setup": "bun run generate && bun run migrate && bun src/db/seed.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.ts\""
   },
