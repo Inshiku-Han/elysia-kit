@@ -1,4 +1,5 @@
 import { Elysia, t } from 'elysia'
+import { cors } from '@elysiajs/cors'
 import { swagger } from '@elysiajs/swagger'
 import { db } from './db'
 import { users } from './db/schema'
@@ -9,6 +10,7 @@ const userTag: Tag = { name: 'Users', description: 'Users related endpoints' }
 const tags: Tag[] = [userTag]
 
 const app = new Elysia()
+	.use(cors())
 	.get('/', () => Bun.file('src/assets/elysia.svg'))
 	.use(
 		swagger({
