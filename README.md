@@ -1,4 +1,4 @@
-# Elysia with Bun runtime
+# Elysia Kit
 
 ## Commands
 
