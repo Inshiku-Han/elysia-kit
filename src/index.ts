@@ -1,13 +1,13 @@
-import { Elysia, t } from 'elysia'
-import { cors } from '@elysiajs/cors'
-import { swagger } from '@elysiajs/swagger'
-import { db } from './db'
-import { users } from './db/schema'
+import { cors } from '@elysiajs/cors';
+import { swagger } from '@elysiajs/swagger';
+import { Elysia, t } from 'elysia';
+import { db } from './db';
+import { users } from './db/schema';
 
-type Tag = { name: string; description?: string }
+type Tag = { name: string; description?: string };
 
-const userTag: Tag = { name: 'Users', description: 'Users related endpoints' }
-const tags: Tag[] = [userTag]
+const userTag: Tag = { name: 'Users', description: 'Users related endpoints' };
+const tags: Tag[] = [userTag];
 
 const app = new Elysia()
 	.use(cors())
@@ -50,16 +50,16 @@ const app = new Elysia()
 				body: 'usersCreateBody',
 				response: 'usersResponse',
 				error: ({ error }) => {
-					console.log(error)
-					return error
+					console.log(error);
+					return error;
 				},
 				detail: {
 					tags: [userTag.name],
 				},
 			}),
 	)
-	.listen(4000)
+	.listen(4000);
 
 console.log(
 	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
-)
+);
