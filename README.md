@@ -14,28 +14,10 @@ bun i
 bun run dev
 ```
 
-- Generate SQL using drizzle-kit
+- Setup DB(Check you create .env file)
 
 ```bash
-bun run generate
-```
-
-- Migrate SQL to database
-
-```bash
-bun run migrate
-```
-
-- Build Docker image
-
-```bash
-docker build --pull -t elysia .
-```
-
-- Run Docker image
-
-```bash
-docker run -d -p 4000:4000 elysia
+bun run setup
 ```
 
 - Format code
@@ -48,4 +30,10 @@ bun run format
 
 ```bash
 bun run lint
+```
+
+- Test
+
+```bash
+bun test
 ```
